@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রেট চার্ট - এক্সচেঞ্জবিডি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .gradient-bg-top {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        .glass-effect {
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .fade-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Notification Banner (same style, অন্য টেক্সট চাইলে বদলাবে) -->
+    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white py-3 px-4 text-center">
+        <div class="max-w-7xl mx-auto flex items-center justify-center space-x-2">
+            <i class="fas fa-info-circle"></i>
+            <span>📊 এই পেজে সর্বশেষ আপডেটেড রেট চার্ট দেখা যাবে (ডেমো ডাটা এখন স্ট্যাটিক)।</span>
+        </div>
+    </div>
+
+    <!-- Floating Social Media Buttons -->
+    <div class="fixed right-8 top-1/2 transform -translate-y-1/2 hidden md:block z-40">
+        <div class="flex flex-col space-y-4">
+            <a href="#" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-all shadow-lg">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white hover:bg-green-600 transition-all shadow-lg">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-all shadow-lg">
+                <i class="fab fa-telegram"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="glass-effect sticky top-0 z-50 gradient-bg-top text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-exchange-alt text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">এক্সচেঞ্জবিডি</h1>
+                        <p class="text-xs text-gray-200/80">প্রিমিয়াম ডিজিটাল এক্সচেঞ্জ প্ল্যাটফর্ম</p>
+                    </div>
+                </div>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#" class="hover:text-yellow-300 transition-all">হোম</a>
+                    <a href="#" class="text-yellow-300 border-b-2 border-yellow-300 pb-1 transition-all">
+                        রেট চার্ট
+                    </a>
+                    <a href="#" class="hover:text-yellow-300 transition-all">হিস্ট্রি</a>
+                    <a href="#" class="hover:text-yellow-300 transition-all">সাপোর্ট</a>
+
+                    <!-- Language Toggle -->
+                    <div class="flex items-center space-x-2 bg-white/20 rounded-full px-3 py-1">
+                        <button class="text-white text-sm font-medium">EN</button>
+                        <div class="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exchange-alt text-xs text-gray-800"></i>
+                        </div>
+                        <button class="text-white text-sm font-medium">BN</button>
+                    </div>
+
+                    <!-- Earn Button -->
+                    <button class="bg-gradient-to-r from-green-400 to-green-500 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all flex items-center space-x-2">
+                        <i class="fas fa-coins"></i>
+                        <span>আয় করুন</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Placeholder -->
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header / Hero (small) -->
+    <section class="gradient-bg-top text-white py-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                    <div class="inline-flex items-center space-x-2 bg-white/10 px-4 py-1 rounded-full mb-3">
+                        <i class="fas fa-chart-line text-yellow-300"></i>
+                        <span class="text-sm font-medium text-yellow-200">লাইভ রেট চার্ট (ডেমো UI)</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">
+                        আজকের সকল এক্সচেঞ্জ রেট
+                    </h1>
+                    <p class="text-blue-100 text-sm md:text-base max-w-2xl">
+                        এখানে আপনি এক নজরে সব <span class="font-semibold">active exchange pair</span> এর
+                        buy/sell রেট, মিন-ম্যাক্স লিমিট এবং স্ট্যাটাস দেখতে পারবেন।
+                    </p>
+                </div>
+
+                <!-- Last update small card -->
+                <div class="bg-white/10 rounded-2xl px-5 py-4 backdrop-blur-md border border-white/20 max-w-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm text-blue-100">Last updated</span>
+                        <span class="text-xs bg-green-500/20 text-green-200 px-2 py-0.5 rounded-full border border-green-400/60">
+                            অটো সিঙ্ক অন
+                        </span>
+                    </div>
+                    <div class="text-lg font-semibold">
+                        আজ ৩:৩০ PM (BDT)
+                    </div>
+                    <p class="text-xs text-blue-100 mt-1">
+                        * এখন সব ডাটা ডেমো হিসেবে দেখানো হচ্ছে, পরবর্তীতে ডাটাবেস থেকে অটো আপডেট হবে।
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Cards -->
+    <section class="py-10 bg-gray-50 fade-section">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Total Active Pairs -->
+                <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-5 flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-link text-purple-600"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Active Pairs</p>
+                        <p class="text-2xl font-bold text-gray-800">২৪</p>
+                        <p class="text-xs text-gray-400">সব কম্বাইন্ড এক্সচেঞ্জ রুট</p>
+                    </div>
+                </div>
+
+                <!-- Average Buy Rate -->
+                <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-5 flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-arrow-down text-green-600 rotate-90"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Avg Buy (USD/BDT)</p>
+                        <p class="text-2xl font-bold text-gray-800">১১৮.৭৫</p>
+                        <p class="text-xs text-green-600 flex items-center space-x-1">
+                            <span>▲</span><span>০.৩০ আজকের তুলনায় বেশি</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Average Sell Rate -->
+                <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-5 flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-arrow-up text-blue-600 rotate-90"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Avg Sell (USD/BDT)</p>
+                        <p class="text-2xl font-bold text-gray-800">১১৬.২০</p>
+                        <p class="text-xs text-red-500 flex items-center space-x-1">
+                            <span>▼</span><span>০.২০ আজকের তুলনায় কম</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Today Updated -->
+                <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-5 flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-sync-alt text-yellow-600"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Updated Today</p>
+                        <p class="text-2xl font-bold text-gray-800">১৮</p>
+                        <p class="text-xs text-gray-400">আজকের মধ্যে যেগুলো ম্যানুয়ালি আপডেট হয়েছে</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="pb-4 bg-gray-50 fade-section">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-4 md:p-5">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <!-- Left filters -->
+                    <div class="flex flex-wrap gap-3">
+                        <!-- From Currency -->
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">From currency</label>
+                            <select class="bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-700 min-w-[150px]">
+                                <option value="">সব</option>
+                                <option>Bkash (BDT)</option>
+                                <option>Nagad (BDT)</option>
+                                <option>Rocket (BDT)</option>
+                                <option>USDT (TRC20)</option>
+                                <option>PayPal (USD)</option>
+                            </select>
+                        </div>
+
+                        <!-- To Currency -->
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">To currency</label>
+                            <select class="bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-700 min-w-[150px]">
+                                <option value="">সব</option>
+                                <option>USDT (TRC20)</option>
+                                <option>USDT (BEP20)</option>
+                                <option>Bkash (BDT)</option>
+                                <option>Nagad (BDT)</option>
+                                <option>Gift Card (Amazon)</option>
+                            </select>
+                        </div>
+
+                        <!-- Type -->
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Type</label>
+                            <select class="bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-700 min-w-[120px]">
+                                <option>All</option>
+                                <option>Fiat → Crypto</option>
+                                <option>Crypto → Fiat</option>
+                                <option>Wallet → Wallet</option>
+                                <option>Gift Card</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Right side search + reset -->
+                    <div class="flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-2 w-full md:w-auto">
+                        <div class="relative flex-1 md:flex-none md:w-64">
+                            <input
+                                type="text"
+                                placeholder="Search pair / shortcode..."
+                                class="w-full bg-gray-50 border border-gray-200 rounded-xl pl-9 pr-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500/60"
+                            >
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                        </div>
+                        <button class="px-4 py-2 rounded-xl border border-gray-200 text-xs font-medium text-gray-700 bg-white hover:bg-gray-50">
+                            Reset filter
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rates Table -->
+    <section class="pb-16 bg-gray-50 fade-section">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+                <!-- Table Header -->
+                <div class="px-6 py-4 border-b border-gray-100 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                            <i class="fas fa-table text-purple-500"></i>
+                            Active Exchange Rates
+                        </h2>
+                        <p class="text-xs text-gray-500">
+                            সব রেট এখন শুধু ভিজ্যুয়াল ডেমো। ডাইনামিক হলে এখান থেকেই ফেচ হবে।
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 text-xs text-gray-500">
+                        <span class="inline-flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span> Active
+                        </span>
+                        <span class="inline-flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-yellow-400"></span> Limited
+                        </span>
+                        <span class="inline-flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-red-500"></span> Paused
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-600">
+                                <th class="px-4 py-3 text-left font-semibold">Pair</th>
+                                <th class="px-4 py-3 text-left font-semibold">Buy Rate</th>
+                                <th class="px-4 py-3 text-left font-semibold">Sell Rate</th>
+                                <th class="px-4 py-3 text-left font-semibold">Min</th>
+                                <th class="px-4 py-3 text-left font-semibold">Max</th>
+                                <th class="px-4 py-3 text-left font-semibold">Type</th>
+                                <th class="px-4 py-3 text-left font-semibold">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3">
+                                    <div class="font-semibold text-gray-800">Bkash (BDT) → USDT (TRC20)</div>
+                                    <div class="text-xs text-gray-500">BKASH_BDT / USDT_TRC</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    ১ USDT = ১১৮.৫০ ৳
+                                    <div class="text-[11px] text-gray-400">Buy from customer</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    ১ USDT = ১২১.০০ ৳
+                                    <div class="text-[11px] text-gray-400">Sell to customer</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">৳ ৫০০</td>
+                                <td class="px-4 py-3 text-gray-800">৳ ৫০,০০০</td>
+                                <td class="px-4 py-3 text-xs text-gray-600">Fiat → Crypto</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+                                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                        Active
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3">
+                                    <div class="font-semibold text-gray-800">Nagad (BDT) → USDT (TRC20)</div>
+                                    <div class="text-xs text-gray-500">NAGAD_BDT / USDT_TRC</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    ১ USDT = ১১৯.০০ ৳
+                                    <div class="text-[11px] text-gray-400">Buy from customer</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    ১ USDT = ১২১.৫০ ৳
+                                    <div class="text-[11px] text-gray-400">Sell to customer</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">৳ ১,০০০</td>
+                                <td class="px-4 py-3 text-gray-800">৳ ৬০,০০০</td>
+                                <td class="px-4 py-3 text-xs text-gray-600">Fiat → Crypto</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+                                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                        Active
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3">
+                                    <div class="font-semibold text-gray-800">USDT (TRC20) → Bkash (BDT)</div>
+                                    <div class="text-xs text-gray-500">USDT_TRC / BKASH_BDT</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    ১ USDT = ১১৬.৫০ ৳
+                                    <div class="text-[11px] text-gray-400">Buy from customer</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    ১ USDT = ১১৯.৫০ ৳
+                                    <div class="text-[11px] text-gray-400">Sell to customer</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">$৫০</td>
+                                <td class="px-4 py-3 text-gray-800">$২,০০০</td>
+                                <td class="px-4 py-3 text-xs text-gray-600">Crypto → Fiat</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs font-semibold">
+                                        <span class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></span>
+                                        Limited
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4 -->
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3">
+                                    <div class="font-semibold text-gray-800">PayPal (USD) → Bkash (BDT)</div>
+                                    <div class="text-xs text-gray-500">PAYPAL_USD / BKASH_BDT</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    ১ USD = ১২০.০০ ৳
+                                    <div class="text-[11px] text-gray-400">Buy from customer</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    ১ USD = ১২৪.০০ ৳
+                                    <div class="text-[11px] text-gray-400">Sell to customer</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">$২০</td>
+                                <td class="px-4 py-3 text-gray-800">$৫০০</td>
+                                <td class="px-4 py-3 text-xs text-gray-600">Wallet → Fiat</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-semibold">
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                                        Paused
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 5 -->
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3">
+                                    <div class="font-semibold text-gray-800">Bkash (BDT) → Amazon Gift Card</div>
+                                    <div class="text-xs text-gray-500">BKASH_BDT / GIFT_AMZ</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    $১ = ১৩০.০০ ৳
+                                    <div class="text-[11px] text-gray-400">Gift card code</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">
+                                    —  
+                                    <div class="text-[11px] text-gray-400">N/A</div>
+                                </td>
+                                <td class="px-4 py-3 text-gray-800">৳ ৩,০০০</td>
+                                <td class="px-4 py-3 text-gray-800">৳ ৫০,০০০</td>
+                                <td class="px-4 py-3 text-xs text-gray-600">Gift Card</td>
+                                <td class="px-4 py-3">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+                                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                        Active
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination / Info Strip -->
+                <div class="px-6 py-4 bg-gray-50 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-gray-500">
+                    <div>
+                        Showing <span class="font-semibold text-gray-700">১–৫</span> of <span class="font-semibold text-gray-700">২৪</span> active pairs
+                        (ডেমো UI)
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="px-3 py-1 rounded-lg border border-gray-200 bg-white hover:bg-gray-100">
+                            Prev
+                        </button>
+                        <button class="px-3 py-1 rounded-lg bg-purple-600 text-white border border-purple-600">
+                            ১
+                        </button>
+                        <button class="px-3 py-1 rounded-lg border border-gray-200 bg-white hover:bg-gray-100">
+                            ২
+                        </button>
+                        <button class="px-3 py-1 rounded-lg border border-gray-200 bg-white hover:bg-gray-100">
+                            ৩
+                        </button>
+                        <span class="px-2">...</span>
+                        <button class="px-3 py-1 rounded-lg border border-gray-200 bg-white hover:bg-gray-100">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer (short version) -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm">
+            <div>
+                <span class="font-semibold">এক্সচেঞ্জবিডি</span>
+                <span class="text-gray-400"> · রেট চার্ট পেজ</span>
+            </div>
+            <div class="flex flex-wrap gap-4 text-gray-400">
+                <a href="#" class="hover:text-white">হোম</a>
+                <a href="#" class="hover:text-white">রেট চার্ট</a>
+                <a href="#" class="hover:text-white">FAQ</a>
+                <a href="#" class="hover:text-white">সাপোর্ট</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // simple fade-in scroll animation for sections
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.fade-section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(sec => {
+                observer.observe(sec);
+            });
+        });
+    </script>
+</body>
+</html>

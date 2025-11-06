@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Details - এক্সচেঞ্জবিডি Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Theme -->
+  <script>
+    (function(){
+      const s=localStorage.getItem('adminTheme');
+      const d=window.matchMedia('(prefers-color-scheme:dark)').matches;
+      if(s==='dark'||(!s&&d)){document.documentElement.classList.add('dark');}
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class'}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>*{font-family:'Hind Siliguri',sans-serif}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+<div class="min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="hidden md:flex flex-col w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800">
+    <div class="p-4 flex items-center gap-3 border-b border-gray-200 dark:border-gray-800">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center text-white">
+        <i class="fas fa-crown"></i>
+      </div>
+      <div>
+        <div class="font-semibold">ExchangeBD Admin</div>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Order Control</p>
+      </div>
+    </div>
+    <nav class="flex-1 p-3 text-sm">
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="fas fa-chart-line"></i> Dashboard</a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-indigo-600 text-white"><i class="fas fa-receipt"></i> Orders</a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="fas fa-users"></i> Users</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col">
+
+    <!-- Topbar -->
+    <header class="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 z-40">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <h1 class="text-lg font-semibold">Order Details</h1>
+        <button id="themeToggle" class="w-9 h-9 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center">
+          <i class="fas fa-sun text-gray-600 dark:hidden"></i>
+          <i class="fas fa-moon text-gray-300 hidden dark:block"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 p-5 max-w-6xl mx-auto space-y-6">
+
+      <!-- Order Info -->
+      <section class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <h2 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">Order #EX-2025-1145</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Created on: ৬ নভেম্বর ২০২৫ · ৩:১৫ PM</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-500/15 dark:text-green-300 text-xs font-semibold">
+            Completed
+          </span>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 text-sm">
+          <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4">
+            <p class="text-gray-500 dark:text-gray-400">User Name</p>
+            <p class="font-semibold text-gray-900 dark:text-gray-100">Rafi Biswas</p>
+            <p class="text-xs text-gray-500">ID: UX-3091</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4">
+            <p class="text-gray-500">From</p>
+            <p class="font-semibold">Bkash (Personal)</p>
+            <p class="text-xs text-gray-500">Wallet: 01XXXXXXXXX</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4">
+            <p class="text-gray-500">To</p>
+            <p class="font-semibold">USDT (TRC20)</p>
+            <p class="text-xs text-gray-500">Wallet: TYk6cVtqZ...JhG</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4">
+            <p class="text-gray-500">Send Amount</p>
+            <p class="font-semibold">৳ ১৫,০০০ BDT</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4">
+            <p class="text-gray-500">Receive Amount</p>
+            <p class="font-semibold">127.12 USDT</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4">
+            <p class="text-gray-500">Rate</p>
+            <p class="font-semibold">১ USDT = ১১৮.০০ BDT</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+        <h3 class="font-semibold mb-4">Order Timeline</h3>
+        <div class="relative pl-6 border-l-2 border-indigo-500 dark:border-indigo-400 space-y-4 text-sm">
+          <div class="relative">
+            <div class="absolute -left-[11px] top-1 w-4 h-4 rounded-full bg-green-500"></div>
+            <p class="font-semibold text-gray-900 dark:text-gray-100">Completed</p>
+            <p class="text-gray-500 text-xs">৬ নভেম্বর ২০২৫ · ৩:২১ PM</p>
+          </div>
+          <div class="relative">
+            <div class="absolute -left-[11px] top-1 w-4 h-4 rounded-full bg-blue-500"></div>
+            <p class="font-semibold">Processing Started</p>
+            <p class="text-gray-500 text-xs">৬ নভেম্বর ২০২৫ · ৩:১৬ PM</p>
+          </div>
+          <div class="relative">
+            <div class="absolute -left-[11px] top-1 w-4 h-4 rounded-full bg-yellow-400"></div>
+            <p class="font-semibold">Pending Verification</p>
+            <p class="text-gray-500 text-xs">৬ নভেম্বর ২০২৫ · ৩:১৫ PM</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Admin Actions -->
+      <section class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 space-y-5">
+        <h3 class="font-semibold">Manage Order Status</h3>
+        <div class="flex flex-wrap gap-3">
+          <button class="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700">
+            Mark Processing
+          </button>
+          <button class="px-4 py-2 rounded-lg bg-green-600 text-white text-sm font-semibold hover:bg-green-700">
+            Mark Completed
+          </button>
+          <button class="px-4 py-2 rounded-lg bg-red-600 text-white text-sm font-semibold hover:bg-red-700">
+            Mark Rejected
+          </button>
+        </div>
+
+        <!-- Rejection reason -->
+        <div>
+          <label class="block text-sm font-medium mb-2">Rejection Reason (Optional)</label>
+          <textarea rows="3" placeholder="যদি অর্ডার রিজেক্ট করতে চান, কারণ লিখুন..."
+                    class="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-400/50 text-sm"></textarea>
+        </div>
+
+        <!-- Save -->
+        <div class="flex justify-end">
+          <button class="px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold">
+            Save Update (UI only)
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  document.getElementById('themeToggle').addEventListener('click',()=>{
+    const root=document.documentElement;
+    const d=root.classList.toggle('dark');
+    localStorage.setItem('adminTheme',d?'dark':'light');
+  });
+</script>
+</body>
+</html>

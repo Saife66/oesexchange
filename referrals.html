@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>রেফারেল প্রোগ্রাম - এক্সচেঞ্জবিডি ইউজার প্যানেল</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Theme init (dark / light) -->
+    <script>
+        (function () {
+            const storedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * { font-family: 'Hind Siliguri', sans-serif; }
+
+        .sidebar-bg-light {
+            background: linear-gradient(180deg, #eef2ff 0%, #f5f3ff 40%, #f8fafc 100%);
+        }
+        .sidebar-bg-dark {
+            background: radial-gradient(circle at top, #4f46e5 0, #020617 55%);
+        }
+        .card-hover {
+            transition: all 0.2s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+        }
+        .pill {
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+
+<div class="min-h-screen flex">
+
+    <!-- Sidebar -->
+    <aside
+        class="hidden lg:flex lg:flex-col w-64 border-r border-slate-200 dark:border-slate-800 sidebar-bg-light dark:sidebar-bg-dark text-slate-800 dark:text-slate-100">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 px-5 py-4 border-b border-slate-200/60 dark:border-slate-800/60">
+            <div
+                class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg">
+                <i class="fas fa-exchange-alt text-white"></i>
+            </div>
+            <div>
+                <div class="text-sm font-semibold tracking-tight">এক্সচেঞ্জবিডি</div>
+                <div class="text-[11px] text-slate-500 dark:text-slate-300/70">User Panel</div>
+            </div>
+        </div>
+
+        <!-- User mini info -->
+        <div class="px-5 py-4 border-b border-slate-200/60 dark:border-slate-800/60 text-xs">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center text-white text-sm font-bold">
+                    র
+                </div>
+                <div class="flex-1">
+                    <div class="text-[13px] font-semibold">রাহিম উদ্দিন</div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-300/70 flex items-center gap-1">
+                        <i class="fas fa-circle text-[7px] text-emerald-400"></i>
+                        Verified user
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <nav class="flex-1 overflow-y-auto py-4 text-[13px]">
+            <div class="px-3 space-y-1">
+                <p class="px-2 mb-1 text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">
+                    Overview
+                </p>
+                <a href="#"
+                   class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-indigo-50 text-slate-700 dark:text-slate-200 dark:hover:bg-slate-800/80">
+                    <i class="fas fa-chart-pie text-xs"></i>
+                    <span>ড্যাশবোর্ড</span>
+                </a>
+                <a href="#"
+                   class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-indigo-50 text-slate-700 dark:text-slate-200 dark:hover:bg-slate-800/80">
+                    <i class="fas fa-receipt text-xs"></i>
+                    <span>আমার অর্ডার</span>
+                </a>
+                <a href="#"
+                   class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-indigo-50 text-slate-700 dark:text-slate-200 dark:hover:bg-slate-800/80">
+                    <i class="fas fa-wallet text-xs"></i>
+                    <span>আমার ওয়ালেট</span>
+                </a>
+            </div>
+
+            <div class="mt-4 px-3 space-y-1">
+                <p class="px-2 mb-1 text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">
+                    Account
+                </p>
+                <a href="#"
+                   class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-indigo-50 text-slate-700 dark:text-slate-200 dark:hover:bg-slate-800/80">
+                    <i class="fas fa-bell text-xs"></i>
+                    <span>নোটিফিকেশন</span>
+                </a>
+                <a href="#"
+                   class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-indigo-50 text-slate-700 dark:text-slate-200 dark:hover:bg-slate-800/80">
+                    <i class="fas fa-user-shield text-xs"></i>
+                    <span>প্রোফাইল &amp; সিকিউরিটি</span>
+                </a>
+                <a href="#"
+                   class="flex items-center gap-2 px-3 py-2 rounded-xl bg-indigo-600 text-white shadow-sm">
+                    <i class="fas fa-users text-xs"></i>
+                    <span>রেফারেল</span>
+                    <span class="ml-auto text-[10px] bg-white/15 px-2 py-0.5 rounded-full">বর্তমান</span>
+                </a>
+            </div>
+
+            <div class="mt-4 px-3 space-y-1">
+                <p class="px-2 mb-1 text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-500">
+                    Help
+                </p>
+                <a href="#"
+                   class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-indigo-50 text-slate-700 dark:text-slate-200 dark:hover:bg-slate-800/80">
+                    <i class="fas fa-circle-question text-xs"></i>
+                    <span>হেল্প সেন্টার</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Sidebar bottom -->
+        <div class="px-4 py-3 border-t border-slate-200/60 dark:border-slate-800/60 text-[11px] text-slate-500 dark:text-slate-400">
+            <div class="flex items-center justify-between">
+                <span>Last login: আজ ৩:৩৪ PM</span>
+                <button class="text-red-500 hover:text-red-400 flex items-center gap-1">
+                    <i class="fas fa-sign-out-alt text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main content wrapper -->
+    <div class="flex-1 flex flex-col">
+
+        <!-- Topbar -->
+        <header
+            class="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-800/70 bg-white/90 dark:bg-slate-950/90 backdrop-blur">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex items-center justify-between gap-3 py-3">
+                    <!-- Left -->
+                    <div class="flex items-center gap-3">
+                        <button class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700">
+                            <i class="fas fa-bars text-sm"></i>
+                        </button>
+                        <div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">ইউজার প্যানেল</div>
+                            <h1 class="text-lg font-semibold flex flex-wrap items-center gap-2">
+                                রেফারেল প্রোগ্রাম
+                                <span class="text-[11px] font-normal px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                                    Invite friends, earn future bonus
+                                </span>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="flex items-center gap-3">
+                        <!-- Theme toggle -->
+                        <button id="themeToggle"
+                                class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-200">
+                            <i class="fas fa-moon text-xs hidden dark:block"></i>
+                            <i class="fas fa-sun text-xs dark:hidden"></i>
+                        </button>
+
+                        <!-- Notifications -->
+                        <button
+                            class="relative w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-slate-900">
+                            <i class="fas fa-bell text-xs text-slate-500 dark:text-slate-300"></i>
+                            <span
+                                class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-red-500 text-[9px] text-white flex items-center justify-center border border-white dark:border-slate-900">
+                                ৩
+                            </span>
+                        </button>
+
+                        <!-- Profile mini -->
+                        <button
+                            class="hidden sm:flex items-center gap-2 pl-2 pr-3 py-1 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+                            <div
+                                class="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center text-[11px] text-white font-bold">
+                                র
+                            </div>
+                            <div class="text-left">
+                                <div class="text-[11px] font-semibold leading-none">রাহিম উদ্দিন</div>
+                                <div class="text-[10px] text-slate-500 dark:text-slate-400">ID: UX-2045</div>
+                            </div>
+                            <i class="fas fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <main class="flex-1">
+            <div class="max-w-6xl mx-auto px-4 py-5 space-y-4">
+
+                <!-- Hero referral card: link + copy -->
+                <section
+                    class="card-hover rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white px-4 py-5 md:px-6 md:py-6 text-xs">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-[14px] shadow">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-base md:text-lg font-semibold mb-1">
+                                    আপনার রেফারেল লিংক শেয়ার করুন – ভবিষ্যতে বোনাস পাবেন 💸
+                                </h2>
+                                <p class="text-[11px] md:text-[12px] text-indigo-100 max-w-xl">
+                                    যেকোনো নতুন ইউজার আপনার লিংকের মাধ্যমে সাইন আপ করে এক্সচেঞ্জ করলে সেই হিসাব এখানে জমা হবে।
+                                    পরবর্তীতে যখন রেফারেল বোনাস চালু হবে, এই ড্যাশবোর্ড থেকেই সব ট্র্যাক করতে পারবেন।
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Referral link UI -->
+                        <div class="w-full lg:w-[340px] space-y-2">
+                            <label class="block text-[11px] text-indigo-100 mb-1">
+                                আপনার রেফারেল লিংক
+                            </label>
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="flex-1 bg-slate-950/20 border border-white/20 rounded-xl px-3 py-2 flex items-center justify-between text-[11px]">
+                                    <span class="truncate font-mono">
+                                        https://exchangexbd.com/ref/UX2045
+                                    </span>
+                                    <button
+                                        class="ml-2 px-2 py-1 rounded-lg bg-black/40 text-[10px] uppercase tracking-wide">
+                                        Copy
+                                    </button>
+                                </div>
+                                <button
+                                    class="hidden md:inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-white text-[11px] text-slate-900 font-semibold">
+                                    <i class="fas fa-share-nodes text-[10px]"></i>
+                                    Quick share
+                                </button>
+                            </div>
+                            <div class="flex flex-wrap gap-2 text-[10px] text-indigo-100">
+                                <span class="pill bg-black/30 text-indigo-100 border border-white/15">
+                                    Referral ID: UX-2045
+                                </span>
+                                <span class="pill bg-black/20 text-indigo-100 border border-white/10">
+                                    Tracking via cookies & user ID (ডেমো)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Summary cards -->
+                <section class="grid grid-cols-2 md:grid-cols-4 gap-3 text-[11px]">
+                    <div
+                        class="rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-3 flex justify-between items-center">
+                        <div>
+                            <div class="text-slate-500 dark:text-slate-400">Total referred users</div>
+                            <div class="text-lg font-semibold text-slate-900 dark:text-slate-50">১২</div>
+                        </div>
+                        <i class="fas fa-user-friends text-slate-400 dark:text-slate-500"></i>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-emerald-200/80 dark:border-emerald-500/20 bg-emerald-50 dark:bg-emerald-500/10 px-3 py-3 flex justify-between items-center">
+                        <div>
+                            <div class="text-emerald-700 dark:text-emerald-200">Active users</div>
+                            <div class="text-lg font-semibold">৮</div>
+                        </div>
+                        <i class="fas fa-circle-check text-emerald-500"></i>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-indigo-200/80 dark:border-indigo-500/20 bg-indigo-50 dark:bg-indigo-500/10 px-3 py-3 flex justify-between items-center">
+                        <div>
+                            <div class="text-indigo-700 dark:text-indigo-200">Completed exchanges</div>
+                            <div class="text-lg font-semibold">২৭</div>
+                        </div>
+                        <i class="fas fa-receipt text-indigo-500"></i>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-amber-200/80 dark:border-amber-500/20 bg-amber-50 dark:bg-amber-500/10 px-3 py-3 flex justify-between items-center">
+                        <div>
+                            <div class="text-amber-700 dark:text-amber-200">Future bonus balance</div>
+                            <div class="text-lg font-semibold">—</div>
+                        </div>
+                        <i class="fas fa-coins text-amber-500"></i>
+                    </div>
+                </section>
+
+                <!-- Bonus summary placeholder card -->
+                <section
+                    class="card-hover rounded-2xl border border-dashed border-amber-300/80 dark:border-amber-500/40 bg-amber-50/70 dark:bg-amber-500/10 px-4 py-4 md:px-5 md:py-5 text-[12px]">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                        <div class="flex items-start gap-2">
+                            <div
+                                class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-700 dark:text-amber-200 flex items-center justify-center text-[13px]">
+                                <i class="fas fa-piggy-bank"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-sm font-semibold text-amber-800 dark:text-amber-100">
+                                    Future bonus summary (Coming soon UI placeholder)
+                                </h2>
+                                <p class="text-[11px] text-amber-800/90 dark:text-amber-100/80">
+                                    এখানে ভবিষ্যতে আপনার রেফারেল থেকে earned টোটাল বোনাস, pending amount, withdraw history ইত্যাদি দেখানো হবে।
+                                    এখন শুধু স্ট্যাটিক মকআপ হিসাবে রাখা হয়েছে।
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-start md:items-end gap-1 text-[11px] text-amber-900 dark:text-amber-100">
+                            <span>Example future layout:</span>
+                            <ul class="list-disc list-inside space-y-0.5">
+                                <li>Total bonus earned: ৳ ০.০০</li>
+                                <li>Pending confirmation: ৳ ০.০০</li>
+                                <li>Withdrawn amount: ৳ ০.০০</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Referred users list -->
+                <section
+                    class="card-hover rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 px-0 py-0 text-[12px] overflow-hidden">
+                    <div class="px-4 py-3 border-b border-slate-100 dark:border-slate-800 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-users text-[11px] text-indigo-500"></i>
+                            <h2 class="text-sm font-semibold">Referred users list</h2>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 text-[11px]">
+                            <div class="relative">
+                                <input
+                                    type="text"
+                                    placeholder="নাম / ইমেইল / আইডি সার্চ করুন..."
+                                    class="w-48 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl pl-7 pr-3 py-1.5 text-[11px] focus:outline-none focus:ring-2 focus:ring-indigo-500/60">
+                                <i class="fas fa-search text-[10px] text-slate-400 dark:text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2"></i>
+                            </div>
+                            <select
+                                class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-1.5 text-[11px] focus:outline-none focus:ring-2 focus:ring-indigo-500/60">
+                                <option>Sort: Recent first</option>
+                                <option>Sort: Exchanges high → low</option>
+                                <option>Sort: Name A→Z</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-xs">
+                            <thead>
+                            <tr class="bg-slate-50 dark:bg-slate-900/70 text-slate-500 dark:text-slate-400">
+                                <th class="px-3 py-2 text-left font-semibold">ইউজার</th>
+                                <th class="px-3 py-2 text-left font-semibold">যোগদান তারিখ</th>
+                                <th class="px-3 py-2 text-left font-semibold">Total exchanges</th>
+                                <th class="px-3 py-2 text-left font-semibold">Estimated future bonus</th>
+                                <th class="px-3 py-2 text-left font-semibold">স্ট্যাটাস</th>
+                            </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                            <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60">
+                                <td class="px-3 py-2 align-top">
+                                    <div class="font-semibold text-[12px] text-slate-800 dark:text-slate-100">
+                                        সুমাইয়া আক্তার
+                                    </div>
+                                    <div class="text-[10px] text-slate-500 dark:text-slate-400">
+                                        ID: UX-3099 · sumaiya@demo.com
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-600 dark:text-slate-300">
+                                    ১০ জুলাই ২০২৫<br>
+                                    Joined via your link
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-600 dark:text-slate-300">
+                                    ৯ টি অর্ডার<br>
+                                    Last: আজ ৩:০৫ PM
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-600 dark:text-slate-300">
+                                    ৳ ০.০০ (future)<br>
+                                    Rate not live yet
+                                </td>
+                                <td class="px-3 py-2 align-top">
+                                    <span
+                                        class="pill bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">
+                                        Active
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60">
+                                <td class="px-3 py-2 align-top">
+                                    <div class="font-semibold text-[12px] text-slate-800 dark:text-slate-100">
+                                        মাহি রহমান
+                                    </div>
+                                    <div class="text-[10px] text-slate-500 dark:text-slate-400">
+                                        ID: UX-2875 · mahi@demo.com
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-600 dark:text-slate-300">
+                                    ৫ জুন ২০২৫<br>
+                                    Joined via your link
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-600 dark:text-slate-300">
+                                    ৪ টি অর্ডার<br>
+                                    Last: গত সপ্তাহ
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-600 dark:text-slate-300">
+                                    ৳ ০.০০ (future)<br>
+                                    Waiting for program launch
+                                </td>
+                                <td class="px-3 py-2 align-top">
+                                    <span
+                                        class="pill bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                                        Semi-active
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60">
+                                <td class="px-3 py-2 align-top">
+                                    <div class="font-semibold text-[12px] text-slate-800 dark:text-slate-100">
+                                        ফাহিম ইসলাম
+                                    </div>
+                                    <div class="text-[10px] text-slate-500 dark:text-slate-400">
+                                        ID: UX-2601 · fahim@demo.com
+                                    </div>
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-600 dark:text-slate-300">
+                                    ২০ মে ২০২৫<br>
+                                    Joined via your link
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-600 dark:text-slate-300">
+                                    ০ অর্ডার<br>
+                                    Still exploring
+                                </td>
+                                <td class="px-3 py-2 align-top text-[11px] text-slate-400 dark:text-slate-500">
+                                    ৳ ০.০০
+                                </td>
+                                <td class="px-3 py-2 align-top">
+                                    <span
+                                        class="pill bg-rose-50 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300">
+                                        Inactive
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Footer note -->
+                    <div
+                        class="px-4 py-3 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                        <span>Showing ১–৩ of ১২ referred users (ডেমো ডাটা)</span>
+                        <span>Note: Live রেফারেল প্রোগ্রাম চালু হলে এখানে রিয়েল টাইম ডাটা আসবে।</span>
+                    </div>
+                </section>
+
+                <!-- Short tips / how it works -->
+                <section
+                    class="card-hover rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 md:px-5 md:py-5 text-[12px]">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-circle-info text-xs text-indigo-500"></i>
+                        <h2 class="text-sm font-semibold">How referrals will work (UI explanation)</h2>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-3 text-[11px] text-slate-600 dark:text-slate-300">
+                        <div class="rounded-xl border border-slate-100 dark:border-slate-800 px-3 py-3">
+                            <div class="font-semibold mb-1">১) লিংক শেয়ার করুন</div>
+                            <p>আপনার প্রোফাইল ভিত্তিক এই referral link টি বন্ধু / ক্লায়েন্টদের সাথে শেয়ার করুন।</p>
+                        </div>
+                        <div class="rounded-xl border border-slate-100 dark:border-slate-800 px-3 py-3">
+                            <div class="font-semibold mb-1">২) তারা সাইন আপ & এক্সচেঞ্জ করবে</div>
+                            <p>তারা এক্সচেঞ্জ করলে সেই অর্ডারগুলো আপনার রেফারেল হিস্টরিতে জমা হবে (উপরে তালিকা অনুযায়ী)।</p>
+                        </div>
+                        <div class="rounded-xl border border-slate-100 dark:border-slate-800 px-3 py-3">
+                            <div class="font-semibold mb-1">৩) পরে বোনাস হিসাব হবে</div>
+                            <p>প্রোগ্রাম লাইভ হলে আপনার রেফারেল থেকে earned বোনাস এই পেজ থেকেই withdraw করতে পারবেন।</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    // Theme toggle handler
+    document.addEventListener('DOMContentLoaded', function () {
+        var btn = document.getElementById('themeToggle');
+        if (!btn) return;
+
+        btn.addEventListener('click', function () {
+            const root = document.documentElement;
+            const isDark = root.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    });
+</script>
+
+</body>
+</html>

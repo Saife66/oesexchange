@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সাপোর্ট & যোগাযোগ - এক্সচেঞ্জবিডি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { font-family: 'Hind Siliguri', sans-serif; }
+
+        .gradient-bg-top {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        .glass-effect {
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .fade-section {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: all 0.6s ease-out;
+        }
+
+        .contact-card {
+            transition: all 0.25s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Notification Banner -->
+    <div class="bg-gradient-to-r from-emerald-500 via-cyan-500 to-sky-500 text-white py-3 px-4 text-center">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 text-sm">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-headset"></i>
+                <span>সাপোর্ট টিম সাধারণত ৫–১৫ মিনিটের মধ্যে রিপ্লাই দেয় (কাজের সময়ের মধ্যে)।</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Social Media Buttons -->
+    <div class="fixed right-8 top-1/2 transform -translate-y-1/2 hidden md:block z-40">
+        <div class="flex flex-col space-y-4">
+            <a href="#" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-all shadow-lg">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white hover:bg-green-600 transition-all shadow-lg">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-all shadow-lg">
+                <i class="fab fa-telegram"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="glass-effect sticky top-0 z-50 gradient-bg-top text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-exchange-alt text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">এক্সচেঞ্জবিডি</h1>
+                        <p class="text-xs text-gray-200/80">প্রিমিয়াম ডিজিটাল এক্সচেঞ্জ প্ল্যাটফর্ম</p>
+                    </div>
+                </div>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#" class="hover:text-yellow-300 transition-all">হোম</a>
+                    <a href="#" class="hover:text-yellow-300 transition-all">রেট চার্ট</a>
+                    <a href="#" class="hover:text-yellow-300 transition-all">FAQ</a>
+                    <a href="#" class="text-yellow-300 border-b-2 border-yellow-300 pb-1 transition-all">
+                        সাপোর্ট
+                    </a>
+
+                    <!-- Language Toggle -->
+                    <div class="flex items-center space-x-2 bg-white/20 rounded-full px-3 py-1">
+                        <button class="text-white text-sm font-medium">EN</button>
+                        <div class="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exchange-alt text-xs text-gray-800"></i>
+                        </div>
+                        <button class="text-white text-sm font-medium">BN</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu -->
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header / Hero -->
+    <section class="gradient-bg-top text-white py-10 pb-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="inline-flex items-center space-x-2 bg-white/10 px-4 py-1 rounded-full mb-3">
+                        <i class="fas fa-headset text-yellow-300"></i>
+                        <span class="text-sm font-medium text-yellow-200">Support &amp; Contact</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-3">
+                        যে কোনো এক্সচেঞ্জ সংক্রান্ত সমস্যায় আমরা পাশে আছি
+                    </h1>
+                    <p class="text-sm md:text-base text-blue-100 max-w-xl">
+                        অর্ডার স্ট্যাটাস, পেমেন্ট কনফার্মেশন, রেট, ভেরিফিকেশন বা সাধারণ যে কোনো প্রশ্ন –
+                        Telegram, WhatsApp, Email অথবা ফর্মের মাধ্যমে আমাদের সাথে যোগাযোগ করতে পারেন।
+                    </p>
+
+                    <div class="mt-5 flex flex-wrap gap-3 text-[11px] text-blue-100">
+                        <span class="inline-flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full">
+                            <i class="fas fa-clock"></i> সাধারণ রেসপন্স টাইম: ৫–১৫ মিনিট*
+                        </span>
+                        <span class="inline-flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full">
+                            <i class="fas fa-calendar-day"></i> সাপ্তাহিক ৭ দিন সার্ভিস (ঘোষণা সাপেক্ষে)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Small info card -->
+                <div class="bg-white/10 rounded-3xl p-5 md:p-6 backdrop-blur-lg border border-white/20">
+                    <h2 class="text-lg font-semibold mb-2 flex items-center gap-2">
+                        <i class="fas fa-info-circle text-yellow-300"></i>
+                        সাপোর্ট নীতি (সংক্ষেপে)
+                    </h2>
+                    <ul class="text-xs text-blue-100 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check mt-0.5 text-emerald-300"></i>
+                            <span>অর্ডার সম্পর্কিত সব কথা লিখিতভাবে (চ্যাট/ইমেইল) রাখার চেষ্টা করুন, প্রুফ হিসেবে কাজে লাগবে।</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check mt-0.5 text-emerald-300"></i>
+                            <span>পেমেন্ট পাঠানোর স্ক্রিনশট এবং ট্রানজেকশন আইডি সবসময় হাতে রাখুন।</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check mt-0.5 text-emerald-300"></i>
+                            <span>পাবলিক পোস্টে সেনসিটিভ তথ্য (ওয়ালেট ঠিকানা, নম্বর) শেয়ার করবেন না, ইনবক্স/সাপোর্টে পাঠান।</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact Methods -->
+    <section class="bg-gray-50 -mt-10 pb-6 fade-section">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Telegram -->
+                <div class="contact-card bg-gradient-to-br from-sky-500 to-blue-600 text-white rounded-3xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
+                                <i class="fab fa-telegram-plane text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold">Telegram</h3>
+                        </div>
+                        <span class="text-[11px] bg-white/15 px-2 py-1 rounded-full border border-white/30">
+                            Fastest
+                        </span>
+                    </div>
+                    <p class="text-sm text-sky-50 mb-4">
+                        ইনস্ট্যান্ট চ্যাট, অর্ডার আপডেট, স্ক্রিনশট শেয়ার – সবকিছুর জন্য বেস্ট অপশন।
+                    </p>
+                    <div class="flex items-center justify-between text-xs">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-sky-100/90">@ExchangeBD_Support</span>
+                            <span class="text-sky-100/70">অফিশিয়াল সাপোর্ট Telegram</span>
+                        </div>
+                        <a href="#"
+                           class="inline-flex items-center gap-2 bg-white text-sky-700 px-3 py-2 rounded-full text-xs font-semibold shadow hover:bg-sky-50">
+                            <span>চ্যাট শুরু করুন</span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="contact-card bg-gradient-to-br from-emerald-500 to-green-500 text-white rounded-3xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold">WhatsApp</h3>
+                        </div>
+                        <span class="text-[11px] bg-white/15 px-2 py-1 rounded-full border border-white/30">
+                            Popular
+                        </span>
+                    </div>
+                    <p class="text-sm text-emerald-50 mb-4">
+                        মোবাইল থেকে সহজে অর্ডার আপডেট, ভয়েস মেসেজ বা ডাইরেক্ট কলের সুবিধা।
+                    </p>
+                    <div class="flex items-center justify-between text-xs">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-emerald-100/90">+৮৮০১XXXXXXXXX</span>
+                            <span class="text-emerald-100/70">Official WhatsApp নম্বর</span>
+                        </div>
+                        <a href="#"
+                           class="inline-flex items-center gap-2 bg-white text-emerald-700 px-3 py-2 rounded-full text-xs font-semibold shadow hover:bg-emerald-50">
+                            <span>WhatsApp ওপেন করুন</span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-card bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl p-6 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
+                                <i class="fas fa-envelope-open-text text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold">Email</h3>
+                        </div>
+                        <span class="text-[11px] bg-white/15 px-2 py-1 rounded-full border border-white/30">
+                            Detailed
+                        </span>
+                    </div>
+                    <p class="text-sm text-indigo-50 mb-4">
+                        ডকুমেন্ট, ডিটেইল এক্সপ্লেইনেশন বা অফিশিয়াল কমপ্লেইন / প্রপোজালের জন্য ইমেইল ব্যবহার করুন।
+                    </p>
+                    <div class="flex items-center justify-between text-xs">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-indigo-100/90">support@exchangebd.com</span>
+                            <span class="text-indigo-100/70">Support / Inquiry / Feedback</span>
+                        </div>
+                        <a href="mailto:support@exchangebd.com"
+                           class="inline-flex items-center gap-2 bg-white text-indigo-700 px-3 py-2 rounded-full text-xs font-semibold shadow hover:bg-indigo-50">
+                            <span>ইমেইল পাঠান</span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form + FAQ Shortcuts -->
+    <section class="py-10 bg-gray-50 fade-section">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <!-- Contact Form -->
+            <div class="md:col-span-2 bg-white rounded-3xl shadow-lg border border-gray-100 p-6 md:p-8">
+                <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-paper-plane text-purple-500"></i>
+                    সরাসরি কন্টাক্ট ফর্ম (UI ডেমো)
+                </h2>
+                <p class="text-xs text-gray-500 mb-5">
+                    এই ফর্মটি এখন শুধুই ডিজাইন/মকআপ হিসেবে কাজ করছে — সাবমিট করলে কিছুই হবে না। পরে এখানে ব্যাকএন্ড কানেক্ট করা যাবে।
+                </p>
+
+                <form class="space-y-4 text-sm">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-600 mb-1">আপনার নাম</label>
+                            <input type="text" placeholder="যেমন: রাহিম উদ্দিন"
+                                   class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500/60">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-600 mb-1">ইমেইল এড্রেস</label>
+                            <input type="email" placeholder="you@example.com"
+                                   class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500/60">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-600 mb-1">কন্টাক্ট টাইপ</label>
+                            <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500/60">
+                                <option>সাধারণ প্রশ্ন</option>
+                                <option>অর্ডার সংক্রান্ত সমস্যা</option>
+                                <option>রেট / ডিল প্রপোজাল</option>
+                                <option>Bug Report</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-600 mb-1">অর্ডার আইডি (যদি থাকে)</label>
+                            <input type="text" placeholder="#EX-2025-0000 (ঐচ্ছিক)"
+                                   class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500/60">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-gray-600 mb-1">বার্তা / সমস্যার বিস্তারিত</label>
+                        <textarea rows="4" placeholder="আপনার সমস্যাটা যত সংক্ষেপে, পরিষ্কার করে লেখা যায় তত ভালো…"
+                                  class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500/60"></textarea>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+                        <div class="flex items-center gap-2 text-gray-500">
+                            <input type="checkbox" id="agree" class="rounded border-gray-300 text-purple-600 focus:ring-purple-500/60">
+                            <label for="agree">আমি নীতিমালা ও প্রাইভেসি পলিসি পড়েছি</label>
+                        </div>
+                        <button type="button"
+                                class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-purple-600 text-white font-semibold hover:bg-purple-700">
+                            <i class="fas fa-paper-plane text-xs"></i>
+                            <span>মেসেজ পাঠান (ডেমো)</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Quick FAQ / Links -->
+            <aside class="space-y-4">
+                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-circle-question text-yellow-400"></i>
+                        আগে এই প্রশ্নগুলো চেক করুন
+                    </h3>
+                    <ul class="space-y-2 text-xs text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="mt-0.5 text-[10px] text-gray-400">#১</span>
+                            <a href="#" class="hover:text-purple-600">
+                                এক্সচেঞ্জ করতে কত সময় লাগে?
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-0.5 text-[10px] text-gray-400">#২</span>
+                            <a href="#" class="hover:text-purple-600">
+                                টাকা পাঠানোর পর অর্ডার পেন্ডিং থাকলে কী করব?
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-0.5 text-[10px] text-gray-400">#৩</span>
+                            <a href="#" class="hover:text-purple-600">
+                                রেট কেন কখনও কখনও একটু কম/বেশি দেখায়?
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-0.5 text-[10px] text-gray-400">#৪</span>
+                            <a href="#" class="hover:text-purple-600">
+                                ভুল নম্বরে পেমেন্ট চলে গেলে কী হবে?
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-5 shadow-md">
+                    <h3 class="text-sm font-semibold mb-2 flex items-center gap-2">
+                        <i class="fas fa-triangle-exclamation text-amber-400"></i>
+                        ইমার্জেন্সি/জরুরি কেস
+                    </h3>
+                    <p class="text-xs text-slate-200 mb-3">
+                        বড় এমাউন্ট, ভুল ওয়ালেটে সেন্ড, বা স্ক্যাম সন্দেহ হলে দেরি না করে সাথে সাথে Telegram বা WhatsApp এ মেসেজ দিন।
+                    </p>
+                    <div class="flex flex-col gap-2 text-xs">
+                        <a href="#" class="inline-flex items-center justify-between bg-white/10 hover:bg-white/15 rounded-xl px-3 py-2 border border-white/15">
+                            <span class="flex items-center gap-2">
+                                <i class="fab fa-telegram-plane"></i>
+                                <span>Emergency Telegram</span>
+                            </span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-between bg-white/10 hover:bg-white/15 rounded-xl px-3 py-2 border border-white/15">
+                            <span class="flex items-center gap-2">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Emergency WhatsApp</span>
+                            </span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-2">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm">
+            <div>
+                <span class="font-semibold">এক্সচেঞ্জবিডি</span>
+                <span class="text-gray-400"> · Support &amp; Contact</span>
+            </div>
+            <div class="flex flex-wrap gap-4 text-gray-400">
+                <a href="#" class="hover:text-white">হোম</a>
+                <a href="#" class="hover:text-white">রেট চার্ট</a>
+                <a href="#" class="hover:text-white">FAQ</a>
+                <a href="#" class="hover:text-white">Terms &amp; Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // simple fade-in scroll animation for sections
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.fade-section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(sec => observer.observe(sec));
+        });
+    </script>
+</body>
+</html>
